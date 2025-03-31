@@ -1,4 +1,5 @@
 <script setup lang='ts'>
+//watch监听ref的简单数据类型
 import { ref, watch } from 'vue';
 
 const sum = ref(0)

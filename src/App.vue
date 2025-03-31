@@ -1,5 +1,5 @@
 <script>
-import Person from './components/watch-01.vue';
+import Person from './components/Person.vue';
 export default {
     name: 'App',
     components:{
