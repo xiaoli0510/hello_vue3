@@ -1,19 +1,21 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { reactive, ref } from 'vue';
 import Person from './components/Person.vue';
-const ren = ref()
-const getTitle = () => {
-    console.log(ren.value);
-    console.log(ren.value.a);
-}
+import type { Persons } from './types';
+const persons = reactive<Persons>([
+    {
+        id: 'ss',
+        name: '后裔',
+        age: 11,
+        x: 12
+    },
+    {
+        id: 'ss2',
+        name: '后裔1',
+        age: 11
+    }
+])
 </script>
 <template>
-    <div ref="title2" class="a">则会使啥</div>
-    <button @click="getTitle">点击获取title</button>
-<Person ref="ren"/>
+<Person :a="1"/>
 </template>
-<style>
-.a {
-    border:1px solid red;
-}
-</style>

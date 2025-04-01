@@ -1,26 +1,31 @@
 <script lang='ts' setup>
-import { ref } from 'vue'
-
-
-
-const title2 = ref()
-const getTitle = () => {
-    console.log(title2.value)
-}
-
-const a = ref(111)
-const b = ref(1)
-
-defineExpose({a})
+import { type PersonInter, type Persons } from '@/types';
+import { reactive } from 'vue';
+//接收props
+// defineProps(['a','b'])
+//接收并保存props
+const props = withDefaults(defineProps<{
+    list?: Persons,
+    a: number,
+    c?: number,
+}>(), {
+    list: () => [{
+        id: 'vv',
+        age: 12,
+        name: '是后裔吗'
+    }],
+    c:33
+})
 
 </script>
 <template>
-   <div ref="title2"  class="a">后裔</div>
-   <button @click="getTitle">点击获取title</button>
-
+    <div>a:{{ a }}</div>
+    <div>c:{{ c }}</div>
+    <div>{{ list }}</div>
+    <div v-for="item in list" :key="item.id">{{ item.name }}--</div>
 </template>
 <style>
 .a {
-    border:1px solid blue;
+    border: 1px solid blue;
 }
 </style>
