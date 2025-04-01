@@ -20,6 +20,7 @@ const changePerson = () => {
 }
 
 watch(person, (newValue, oldValue) => {
+    //监视的是对象的地址值，如果想监听属性变化，则需要手动添加deep:true
     //若整个改变person,newValue和 oldValue一样，都是新值
     //若改变person的属性，newValue和 oldValue不一样
     console.log(newValue, oldValue)
