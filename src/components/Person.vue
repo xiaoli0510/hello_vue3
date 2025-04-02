@@ -1,28 +1,42 @@
 <script lang='ts' setup>
-import { type PersonInter, type Persons } from '@/types';
-import { reactive } from 'vue';
-//接收props
-// defineProps(['a','b'])
-//接收并保存props
-const props = withDefaults(defineProps<{
-    list?: Persons,
-    a: number,
-    c?: number,
-}>(), {
-    list: () => [{
-        id: 'vv',
-        age: 12,
-        name: '是后裔吗'
-    }],
-    c:33
+import { onBeforeMount, onBeforeUnmount, onBeforeUpdate, onMounted, onUnmounted, onUpdated, ref } from 'vue';
+
+const sum = ref(1)
+const addSum = () => {
+    sum.value += 1
+}
+console.log('创建前')
+
+onBeforeMount(() => {
+    console.log('挂载前');
 })
+
+onMounted(() => {
+    console.log('子--挂载后');
+})
+onBeforeUpdate(() => {
+    console.log('更新前');
+})
+
+onUpdated(() => {
+    console.log('更新后');
+})
+
+onBeforeUnmount( () => {
+    console.log('销毁前');
+})
+
+onUnmounted(() => {
+    console.log('销毁后');
+})
+
+
 
 </script>
 <template>
-    <div>a:{{ a }}</div>
-    <div>c:{{ c }}</div>
-    <div>{{ list }}</div>
-    <div v-for="item in list" :key="item.id">{{ item.name }}--</div>
+    <div>sum:{{ sum }}</div>
+    <button @click="addSum">增加sum</button>
+  
 </template>
 <style>
 .a {
