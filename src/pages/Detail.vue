@@ -1,17 +1,16 @@
 <script setup lang='ts'>
-import { toRefs } from 'vue';
+import { toRef, toRefs } from 'vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute()
 console.log(route)
-const {params} = toRefs(route)
+defineProps(['id', 'title', 'content'])  
 
 </script>
 <template>
     这是detail
-    <div>id:{{ params.id }}</div>
-    <div>title:{{ params.title }}</div>
-    <div>content:{{ params.content }}</div>
-    <div>a:{{ params.a }}</div>
+    <div>id:{{id}}</div>
+    <div>title:{{ title }}</div>
+    <div>content:{{ content }}</div>
 </template>
 <style scoped lang='scss'></style>
