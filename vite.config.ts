@@ -10,6 +10,9 @@ export default defineConfig({
     vue(),
     // vueDevTools(),
   ],
+  define: {
+    __VUE_PROD_DEVTOOLS__: true // 确保生产环境也能保留 DevTools 支持
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))

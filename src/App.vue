@@ -1,20 +1,14 @@
-<script setup lang="ts">
-import Header from '@/components/Header.vue'
+<script setup lang='ts'>
+import { useCount } from './components/countHooks';
+
+
+const {sum,add,minus} =useCount()
+
 </script>
 <template>
-    <div>
-        <Header/>
-       <router-link   to="/home" active-class="a">首页</router-link>
-       <router-link  :to="{name:'xinwen'}" active-class="a">新闻</router-link>
-       <router-link replace :to="{path:'/about'}" active-class="a">关于</router-link>
-       <div>
-        这是展示区
-        <router-view/>
-       </div>
-    </div>
+
+<div>sum:{{  sum}}</div>
+<button @click="add">+</button>
+<button @click="minus">-</button>
 </template>
-<style scoped>
-.a {
-    border:1px solid blue;
-}
-</style>
+<style scoped lang='scss'></style>
