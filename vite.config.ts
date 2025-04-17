@@ -11,7 +11,7 @@ export default defineConfig({
     // vueDevTools(),
   ],
   define: {
-    '__VUE_PROD_DEVTOOLS__': true // 确保生产环境也能调试
+    __VUE_PROD_DEVTOOLS__: true // 确保生产环境也能保留 DevTools 支持
   },
   resolve: {
     alias: {

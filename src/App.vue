@@ -1,10 +1,14 @@
 <script setup lang='ts'>
-import Count from '@/components/Count.vue'
-import LoveTalk  from '@/components/LoveTalk.vue'
+import { useCount } from './components/countHooks';
+
+
+const {sum,add,minus} =useCount()
+
 </script>
 <template>
-<Count/>
-<LoveTalk/>
+
+<div>sum:{{  sum}}</div>
+<button @click="add">+</button>
+<button @click="minus">-</button>
 </template>
-<style scoped lang='scss'>
-</style>
+<style scoped lang='scss'></style>
