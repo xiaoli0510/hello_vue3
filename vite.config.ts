@@ -10,9 +10,21 @@ export default defineConfig({
     vue(),
     // vueDevTools(),
   ],
+  define: {
+    '__VUE_PROD_DEVTOOLS__': true // 确保生产环境也能调试
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
+    },
+  },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://api.uomg.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
     },
   },
 })
