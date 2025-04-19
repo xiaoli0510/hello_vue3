@@ -1,31 +1,22 @@
 <script setup lang='ts'>
-import { storeToRefs } from 'pinia';
-import { useCount } from './store/count';
+import mitt from 'mitt'
+import A from './A.vue';
+import { onMounted, ref } from 'vue';
+import emitter from '@/eventBus.ts'
 
-const countStore = useCount()
-const {sum,bigSum} = storeToRefs(countStore)
-const {addSum,minus} = countStore
-
-sum.value = Number(localStorage.getItem('sum')) || 0
-
-countStore.$subscribe((mutation,state) => {
-    console.log(mutation,state)
-    localStorage.setItem('sum',sum.value.toString())
+const res = ref('')
+emitter.on('foo',(val:string) => {
+    res.value = val
 })
- 
-const addPatch = () => {
-    // countStore.$patch({
-    //     sum:22
-    // })
-    sum.value +=1
+const fight1 = () => {
+    emitter.emit('foo1','蔡文姬')
 }
-
 </script>
 <template>
-<div>sum:{{ sum }}</div>
-<div>bigSum:{{ bigSum }}</div>
-    <button @click="addSum">+</button>
-    <button @click="minus">-</button>
-    <button @click="addPatch">patch的方式修改</button>
+    <div>这是A给:{{ res }}</div>
+    <button @click="fight1">我开团</button>
+    <A/>
+
 </template>
-<style scoped lang='scss'></style>
+<style scoped lang='scss'>
+</style>
