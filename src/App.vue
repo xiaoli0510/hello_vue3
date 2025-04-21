@@ -1,22 +1,21 @@
 <script setup lang='ts'>
-import mitt from 'mitt'
+import { ref } from 'vue';
 import A from './A.vue';
-import { onMounted, ref } from 'vue';
-import emitter from '@/eventBus.ts'
 
-const res = ref('')
-emitter.on('foo',(val:string) => {
-    res.value = val
+const daye = defineModel('a',{
+    default:'李信'
 })
-const fight1 = () => {
-    emitter.emit('foo1','蔡文姬')
+const zhonglu = defineModel('b',{
+    default:'虞姬'
+})
+
+const change = () => {
+    daye.value = '阿珂'
 }
+
 </script>
 <template>
-    <div>这是A给:{{ res }}</div>
-    <button @click="fight1">我开团</button>
-    <A/>
-
+    <button @click="change('1')">改变</button>
+    <A v-model:a="daye" v-model:b="zhonglu"></A>
 </template>
-<style scoped lang='scss'>
-</style>
+<style scoped lang='scss'></style>
